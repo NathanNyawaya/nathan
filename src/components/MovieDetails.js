@@ -7,7 +7,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
   const { favorites, toggleFavorite } = useContext(MyMovieContext);
   const isFavorite = favorites.includes(parseInt(id))
-  console.log(isFavorite)
+  // console.log(isFavorite)
   const [added, setAdded] = useState(isFavorite)
 
 
@@ -33,7 +33,7 @@ const MovieDetails = () => {
   };
 
   const handleClick = (e) => {
-    console.log("clicked");
+    // console.log("clicked");
     const movieId = parseInt(e.target.getAttribute("data-id"));
     toggleFavorite(movieId);
     setAdded(prev => !prev)
