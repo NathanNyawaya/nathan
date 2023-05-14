@@ -113,7 +113,7 @@ const Home = () => {
               </Link>
 
               <div className="movie-details">
-                <h3 className="movie-title">{item.title}</h3>
+                <p className="movie-title">{item.title}</p>
               </div>
             </div>
           ))
