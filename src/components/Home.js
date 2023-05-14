@@ -28,7 +28,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const apiKey = "f0bcbf02b64d41045b26c944faa72ea1";;
+    const apiKey = "f0bcbf02b64d41045b26c944faa72ea1";
     let apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
 
     // if genre id is selected, update the apiUrl with genre id as a query parameter
