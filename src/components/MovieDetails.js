@@ -92,7 +92,7 @@ const MovieDetails = () => {
                 {added ? "Delete movie" : "Add movie"}
               </button>
               {trailer && (
-                <a href={trailerLink} target="_blank">
+                <a href={trailerLink} target="_blank" rel="noreferrer">
                   <button>Watch trailer</button>
                 </a>
               )}
