@@ -126,6 +126,11 @@ body {
   cursor: pointer;
 }
 
+.button--container{
+  display: flex;
+  gap: 4px;
+}
+
 .top {
   display: flex;
   justify-content: space-between;
