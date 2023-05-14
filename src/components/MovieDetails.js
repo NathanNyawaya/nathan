@@ -19,8 +19,9 @@ const MovieDetails = () => {
       );
       const data = await response.json();
       setMovie(data);
-      // console.log(data);
+      
     };
+    
     Fetch();
   }, [id]);
 
@@ -55,10 +56,13 @@ const MovieDetails = () => {
       </div>
       <div className="detail-page--container">
         <div className="movie--detail">
-          <img src={getPosterURL(movie.poster_path)} alt={movie.title} />
+          <Link to={`/movies/${movie.id}`}>
+              <img src={getPosterURL(movie.poster_path)} alt={movie.title} />
+            </Link>
 
           <div className="detail-page--details">
-            <h2>{movie.title}</h2>
+            <h3>{movie.title}</h3>
+            <p>Genre: {movie.genres?.map(item => item.name + " ")}</p>
             <p>Runtime: {movie.runtime} minutes</p>
             <p>Release Date: {movie.release_date}</p>
             <p>Description: {movie.overview}</p>

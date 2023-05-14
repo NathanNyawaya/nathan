@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyMovieContext } from "../context/FavoriteMovies";
 
-const API_KEY = "f0bcbf02b64d41045b26c944faa72ea1";
+const apiKey = "f0bcbf02b64d41045b26c944faa72ea1"
 const API_URL = "https://api.themoviedb.org/3/movie/";
 
 const Watchlist = () => {
@@ -14,7 +14,7 @@ const Watchlist = () => {
     const fetchMovies = async () => {
       const movieDetails = await Promise.all(
         favorites.map(async (id) => {
-          const response = await fetch(`${API_URL}${id}?api_key=${API_KEY}`);
+          const response = await fetch(`${API_URL}${id}?api_key=${apiKey}`);
           const data = await response.json();
           // console.log(data);
           return data;
@@ -30,10 +30,11 @@ const Watchlist = () => {
     <div className="watchlist">
       <div className="top">
         <Link to="/" className="top-link">
-          <p>MyMovies</p>
+          <p>Home</p>
         </Link>
       </div>
       <div className="watchlist--section">
+        <p className="my--movies">My movies</p>
         <div className="container">
           {favorites.length === 0 && (
             <p className="empty--list">
@@ -45,15 +46,19 @@ const Watchlist = () => {
           )}
           {myMovies.map((item, index) => (
             <div className="movie-card" key={index}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                alt={item.title}
-                
-              />
+              <Link to={`/movies/${item.id}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                  alt={item.title}
+                />
+              </Link>
 
               <div className="movie-details">
                 <p className="movie-title">{item.title}</p>
-                <button className="movie--details--button" onClick={() => toggleFavorite(item.id)}>
+                <button
+                  className="movie--details--button"
+                  onClick={() => toggleFavorite(item.id)}
+                >
                   Delete movie
                 </button>
               </div>
