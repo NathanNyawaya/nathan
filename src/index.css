@@ -247,6 +247,7 @@ body {
 .empty--list {
   font-size: 1rem;
   color: white;
+  position: absolute;
 }
 
 .empty--link {
