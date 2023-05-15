@@ -16,7 +16,6 @@ const Watchlist = () => {
         favorites.map(async (id) => {
           const response = await fetch(`${API_URL}${id}?api_key=${apiKey}`);
           const data = await response.json();
-          // console.log(data);
           return data;
         })
       );
@@ -30,11 +29,11 @@ const Watchlist = () => {
     <div className="watchlist">
       <div className="top">
         <Link to="/" className="top-link">
-          <p>Home</p>
+          <p>MyMovies</p>
         </Link>
       </div>
       <div className="watchlist--section">
-        <p className="my--movies">My movies</p>
+        <p className="my--movies">Added movies</p>
         <div className="container">
           {favorites.length === 0 && (
             <p className="empty--list">

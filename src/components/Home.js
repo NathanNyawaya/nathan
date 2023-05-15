@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { MyMovieContext } from "../context/FavoriteMovies";
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
   const { favorites } = useContext(MyMovieContext);
+  const [movies, setMovies] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [isloading, setIsLoading] = useState(false);
   const [errorFetch, setErrorFetch] = useState(false)
@@ -16,12 +16,10 @@ const Home = () => {
       // filter movies that do not have images out
       const filteredMovies = data.results.filter((movie) => movie.poster_path);
       setMovies(filteredMovies);
-      // setMovies(data.results || data);
       if (data.results.length === 0) {
         setIsLoading(false);
         setErrorFetch(true)
       }
-      // console.log(data.results);
     } catch (error) {
       console.log(error)
     }
@@ -47,30 +45,32 @@ const Home = () => {
     const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`
     Fetch(apiUrl);
   };
-
-  const handleGenreChange = (event) => {
-    setSelectedGenre(event.target.value);
-  };
-
+  
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleSearchClick();
     }
   };
 
+  const handleGenreChange = (event) => {
+    setSelectedGenre(event.target.value);
+  };
+
+
   const getPosterURL = (posterpath) => {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face/${posterpath}`;
   };
+  
   return (
     <div className="home--section">
       <div className="header">
         <div className="top">
           <div className="top--left">
-            <Link to="/" className="top-link">
+            <Link to="/" onClick={()=> setSelectedGenre("")} className="top-link">
               <p>MyMovies</p>
             </Link>
             <select value={selectedGenre} onChange={handleGenreChange}>
-              <option value="">All Genres</option>
+              <option value="">Popular</option>
               <option value="28">Action</option>
               <option value="35">Comedy</option>
               <option value="18">Drama</option>
@@ -78,7 +78,7 @@ const Home = () => {
               <option value="10749">Romance</option>
             </select>
           </div>
-          <Link className="top-link" to="/fav">
+          <Link className="top-link" to="/watchlist">
             <p>
               My Watchlist <span>{favorites ? favorites.length : 0}</span>
             </p>
@@ -108,6 +108,7 @@ const Home = () => {
         {movies.length > 0 ? (
           movies.map((item, index) => (
             <div className="movie-card" key={index}>
+              {console.log(index)}
               <Link to={`/movies/${item.id}`}>
                 <img src={getPosterURL(item.poster_path)} alt={item.title} />
               </Link>

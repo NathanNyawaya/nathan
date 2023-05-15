@@ -54,7 +54,6 @@ const MovieDetails = () => {
   };
 
   const handleClick = (e) => {
-    // console.log("clicked");
     const movieId = parseInt(e.target.getAttribute("data-id"));
     toggleFavorite(movieId);
     setAdded((prev) => !prev);
@@ -68,7 +67,7 @@ const MovieDetails = () => {
             <p>MyMovies</p>
           </Link>
 
-          <Link className="top-link" to="/fav">
+          <Link className="top-link" to="/watchlist">
             <p>
               My Watchlist <span>{favorites ? favorites.length : 0}</span>
             </p>

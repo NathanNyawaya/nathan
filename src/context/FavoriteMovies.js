@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
+
 export const MyMovieContext = createContext([]);
 
 export const FavoritesProvider = ({ children }) => {
@@ -20,7 +21,7 @@ export const FavoritesProvider = ({ children }) => {
       favorites.push(id);
     }
   
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    // localStorage.setItem("favorites", JSON.stringify(favorites));
     setFavorites(favorites);
   };
   

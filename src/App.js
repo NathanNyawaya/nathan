@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./components/Home";
 import Watchlist from "./components/Watchlist";
-import { BrowserRouter, Route, Routes as Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MovieDetails from "./components/MovieDetails";
 import { FavoritesProvider } from "./context/FavoriteMovies";
 
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <Switch>
+        <Routes>
           <Route
             path="/"
             element={
@@ -19,7 +19,7 @@ const App = () => {
             }
           />
           <Route
-            path="/fav"
+            path="/watchlist"
             element={
               <FavoritesProvider>
                 <Watchlist />
@@ -34,7 +34,7 @@ const App = () => {
               </FavoritesProvider>
             }
           />
-        </Switch>
+        </Routes>
       </div>
     </BrowserRouter>
   );
